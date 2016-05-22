@@ -42,10 +42,20 @@ public class PayinfoRepositoryImpl extends BaseRepositoryImpl<Payinfo, PayinfoMa
 	public String findIsCollect(String memberId) {
 		return this.getMapper().selectIsCollect(memberId);
 	}
+	
+	@Override
+	public String findIsCollect(String memberId,String activityId) {
+		return this.getMapper().selectIsCollect(memberId,activityId);
+	}
 
 	@Override
 	public int findIsPay(String memberId) {
 		return this.getMapper().selectIsPay(memberId);
+	}
+
+	@Override
+	public int findIsPay(String memberId, String activityId) {
+		return this.getMapper().selectIsPay(memberId,activityId);
 	}
 
 	

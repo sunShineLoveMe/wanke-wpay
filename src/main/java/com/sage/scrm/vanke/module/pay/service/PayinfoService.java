@@ -31,7 +31,11 @@ public interface PayinfoService extends BaseService<Payinfo>{
 	
 	String queryIsCollect(String memberId);
 	
+	String queryIsCollect(String memberId,String activityId);
+	
 	int queryIsPay(String memberId);
+	
+	int queryIsPay(String memberId,String activityId);
 	
 	
 }
