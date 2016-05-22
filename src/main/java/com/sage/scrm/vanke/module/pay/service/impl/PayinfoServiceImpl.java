@@ -57,18 +57,8 @@ public class PayinfoServiceImpl extends BaseServiceImpl<Payinfo> implements Payi
 	}
 
 	@Override
-	public String queryIsCollect(String memberId) {
-		return payinfoRepository.findIsCollect(memberId);
-	}
-	
-	@Override
 	public String queryIsCollect(String memberId,String activityId) {
 		return payinfoRepository.findIsCollect(memberId,activityId);
-	}
-
-	@Override
-	public int queryIsPay(String memberId) {
-		return payinfoRepository.findIsPay(memberId);
 	}
 
 	@Override

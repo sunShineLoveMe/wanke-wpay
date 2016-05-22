@@ -7,11 +7,7 @@ public interface PayinfoMapper extends BaseMapper<Payinfo> {
 	
 	String selectIsMember(String mobile);
 	
-	String selectIsCollect(String memberId);
-	
 	String selectIsCollect(String memberId,String activityId);
-	
-	int selectIsPay(String memberId);
 
 	int selectIsPay(String memberId, String activityId);
 	

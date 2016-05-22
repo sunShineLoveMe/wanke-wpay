@@ -188,20 +188,9 @@
   		and mbi_deleted=0
   </select>
   
-  
-  <select id="selectIsCollect" resultMap="BaseResultMap" parameterType="java.lang.String">
-  	select t.collectid from APPLY_ACTIVITY_COLLECT t 
-  	where t.memberid = #{memberid} 
-  </select>
-  
   <select id="selectIsCollect" resultMap="BaseResultMap" parameterType="java.lang.String">
   	select t.collectid from APPLY_ACTIVITY_COLLECT t 
   	where t.memberid = #{memberid} and t.activityid = #{activityid} 
-  </select>
-  
-  <select id="selectIsPay" resultMap="BaseResultMap" parameterType="java.lang.String">
-  	select count(*) from PayInfo
-  	where memberID = #{memberid} 
   </select>
   
     <select id="selectIsPay" resultMap="BaseResultMap" parameterType="java.lang.String">

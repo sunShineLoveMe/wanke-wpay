@@ -27,11 +27,7 @@ public interface PayinfoRepository extends BaseRepository<Payinfo, PayinfoMapper
 	
 	String findIsMember(String mobile);
 	
-	String findIsCollect(String memberId);
-	
 	String findIsCollect(String memberId,String activityId);
-	
-	int findIsPay(String memberId);
 	
 	int findIsPay(String memberId,String activityId);
 	
