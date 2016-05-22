@@ -12,6 +12,7 @@ $(document).ready(function(){
 			dataType : "json",
 			success : function(result) {
 				if(result.code == 200){
+					// sdsd
 					list =result.list;
 					/*var appendHtml ="";*/
 					var appendOptions ="";
