@@ -25,8 +25,18 @@ public class Payinfo {
     private String transactionid;
 
     private Date checktime;
+    
+    private String paybank;
 
-    public BigDecimal getId() {
+    public String getPaybank() {
+		return paybank;
+	}
+
+	public void setPaybank(String paybank) {
+		this.paybank = paybank;
+	}
+
+	public BigDecimal getId() {
         return id;
     }
 
