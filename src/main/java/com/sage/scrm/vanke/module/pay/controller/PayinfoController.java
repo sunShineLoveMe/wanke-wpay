@@ -40,7 +40,7 @@ public class PayinfoController {
 		String memberId = "";
 		try {
 			map = new HashMap<String, Object>();
-			isCollect = payinfoService.queryIsCollect(memberId);
+			/*isCollect = payinfoService.queryIsCollect(memberId);*/
 			
 			map.put("isCollect", isCollect);
 			map.put("admin", "admin");
