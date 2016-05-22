@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sage.scrm.vanke.module.pay.mapper.ActitypayconfigMapper" >
+  <resultMap id="BaseResultMap" type="com.sage.scrm.vanke.module.pay.model.Actitypayconfig" >
+    <id column="ACTIVITYID" property="activityid" jdbcType="DECIMAL" />
+    <result column="ACTIVITYTYPE" property="activitytype" jdbcType="VARCHAR" />
+    <result column="ACTIVITYNAME" property="activityname" jdbcType="VARCHAR" />
+    <result column="PERSONLIMIT" property="personlimit" jdbcType="DECIMAL" />
+    <result column="ACTIVITYMONEY" property="activitymoney" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ACTIVITYID, ACTIVITYTYPE, ACTIVITYNAME, PERSONLIMIT, ACTIVITYMONEY, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from ACTITYPAYCONFIG
+    where ACTIVITYID = #{activityid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from ACTITYPAYCONFIG
+    where ACTIVITYID = #{activityid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.sage.scrm.vanke.module.pay.model.Actitypayconfig" >
+    insert into ACTITYPAYCONFIG (ACTIVITYID, ACTIVITYTYPE, ACTIVITYNAME, 
+      PERSONLIMIT, ACTIVITYMONEY, STATUS
+      )
+    values (#{activityid,jdbcType=DECIMAL}, #{activitytype,jdbcType=VARCHAR}, #{activityname,jdbcType=VARCHAR}, 
+      #{personlimit,jdbcType=DECIMAL}, #{activitymoney,jdbcType=DECIMAL}, #{status,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sage.scrm.vanke.module.pay.model.Actitypayconfig" >
+    insert into ACTITYPAYCONFIG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activityid != null" >
+        ACTIVITYID,
+      </if>
+      <if test="activitytype != null" >
+        ACTIVITYTYPE,
+      </if>
+      <if test="activityname != null" >
+        ACTIVITYNAME,
+      </if>
+      <if test="personlimit != null" >
+        PERSONLIMIT,
+      </if>
+      <if test="activitymoney != null" >
+        ACTIVITYMONEY,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activityid != null" >
+        #{activityid,jdbcType=DECIMAL},
+      </if>
+      <if test="activitytype != null" >
+        #{activitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="activityname != null" >
+        #{activityname,jdbcType=VARCHAR},
+      </if>
+      <if test="personlimit != null" >
+        #{personlimit,jdbcType=DECIMAL},
+      </if>
+      <if test="activitymoney != null" >
+        #{activitymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sage.scrm.vanke.module.pay.model.Actitypayconfig" >
+    update ACTITYPAYCONFIG
+    <set >
+      <if test="activitytype != null" >
+        ACTIVITYTYPE = #{activitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="activityname != null" >
+        ACTIVITYNAME = #{activityname,jdbcType=VARCHAR},
+      </if>
+      <if test="personlimit != null" >
+        PERSONLIMIT = #{personlimit,jdbcType=DECIMAL},
+      </if>
+      <if test="activitymoney != null" >
+        ACTIVITYMONEY = #{activitymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where ACTIVITYID = #{activityid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sage.scrm.vanke.module.pay.model.Actitypayconfig" >
+    update ACTITYPAYCONFIG
+    set ACTIVITYTYPE = #{activitytype,jdbcType=VARCHAR},
+      ACTIVITYNAME = #{activityname,jdbcType=VARCHAR},
+      PERSONLIMIT = #{personlimit,jdbcType=DECIMAL},
+      ACTIVITYMONEY = #{activitymoney,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=CHAR}
+    where ACTIVITYID = #{activityid,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectByStatus" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from ACTITYPAYCONFIG
+    where STATUS = #{status,jdbcType=CHAR}
+  </select>
+  
+</mapper>

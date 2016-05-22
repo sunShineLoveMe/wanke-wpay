@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sage.scrm.vanke.module.pay.mapper.PayinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sage.scrm.vanke.module.pay.model.Payinfo" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ACTIVITYID" property="activityid" jdbcType="DECIMAL" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="MEMBERID" property="memberid" jdbcType="DECIMAL" />
+    <result column="PERSONNUMBER" property="personnumber" jdbcType="DECIMAL" />
+    <result column="PAYMONEY" property="paymoney" jdbcType="DECIMAL" />
+    <result column="PAYSTATUS" property="paystatus" jdbcType="CHAR" />
+    <result column="ORDERNUMBER" property="ordernumber" jdbcType="VARCHAR" />
+    <result column="PAYTIME" property="paytime" jdbcType="DATE" />
+    <result column="TRANSACTIONID" property="transactionid" jdbcType="VARCHAR" />
+    <result column="CHECKTIME" property="checktime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ACTIVITYID, MOBILE, MEMBERID, PERSONNUMBER, PAYMONEY, PAYSTATUS, ORDERNUMBER, 
+    PAYTIME, TRANSACTIONID, CHECKTIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAYINFO
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from PAYINFO
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.sage.scrm.vanke.module.pay.model.Payinfo" >
+    insert into PAYINFO (ID, ACTIVITYID, MOBILE, 
+      MEMBERID, PERSONNUMBER, PAYMONEY, 
+      PAYSTATUS, ORDERNUMBER, PAYTIME, 
+      TRANSACTIONID, CHECKTIME)
+    values (#{id,jdbcType=DECIMAL}, #{activityid,jdbcType=DECIMAL}, #{mobile,jdbcType=VARCHAR}, 
+      #{memberid,jdbcType=DECIMAL}, #{personnumber,jdbcType=DECIMAL}, #{paymoney,jdbcType=DECIMAL}, 
+      #{paystatus,jdbcType=CHAR}, #{ordernumber,jdbcType=VARCHAR}, #{paytime,jdbcType=DATE}, 
+      #{transactionid,jdbcType=VARCHAR}, #{checktime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sage.scrm.vanke.module.pay.model.Payinfo" >
+    insert into PAYINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="activityid != null" >
+        ACTIVITYID,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="memberid != null" >
+        MEMBERID,
+      </if>
+      <if test="personnumber != null" >
+        PERSONNUMBER,
+      </if>
+      <if test="paymoney != null" >
+        PAYMONEY,
+      </if>
+      <if test="paystatus != null" >
+        PAYSTATUS,
+      </if>
+      <if test="ordernumber != null" >
+        ORDERNUMBER,
+      </if>
+      <if test="paytime != null" >
+        PAYTIME,
+      </if>
+      <if test="transactionid != null" >
+        TRANSACTIONID,
+      </if>
+      <if test="checktime != null" >
+        CHECKTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=DECIMAL},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=DECIMAL},
+      </if>
+      <if test="personnumber != null" >
+        #{personnumber,jdbcType=DECIMAL},
+      </if>
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="paystatus != null" >
+        #{paystatus,jdbcType=CHAR},
+      </if>
+      <if test="ordernumber != null" >
+        #{ordernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=DATE},
+      </if>
+      <if test="transactionid != null" >
+        #{transactionid,jdbcType=VARCHAR},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sage.scrm.vanke.module.pay.model.Payinfo" >
+    update PAYINFO
+    <set >
+      <if test="activityid != null" >
+        ACTIVITYID = #{activityid,jdbcType=DECIMAL},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        MEMBERID = #{memberid,jdbcType=DECIMAL},
+      </if>
+      <if test="personnumber != null" >
+        PERSONNUMBER = #{personnumber,jdbcType=DECIMAL},
+      </if>
+      <if test="paymoney != null" >
+        PAYMONEY = #{paymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="paystatus != null" >
+        PAYSTATUS = #{paystatus,jdbcType=CHAR},
+      </if>
+      <if test="ordernumber != null" >
+        ORDERNUMBER = #{ordernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="paytime != null" >
+        PAYTIME = #{paytime,jdbcType=DATE},
+      </if>
+      <if test="transactionid != null" >
+        TRANSACTIONID = #{transactionid,jdbcType=VARCHAR},
+      </if>
+      <if test="checktime != null" >
+        CHECKTIME = #{checktime,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sage.scrm.vanke.module.pay.model.Payinfo" >
+    update PAYINFO
+    set ACTIVITYID = #{activityid,jdbcType=DECIMAL},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      MEMBERID = #{memberid,jdbcType=DECIMAL},
+      PERSONNUMBER = #{personnumber,jdbcType=DECIMAL},
+      PAYMONEY = #{paymoney,jdbcType=DECIMAL},
+      PAYSTATUS = #{paystatus,jdbcType=CHAR},
+      ORDERNUMBER = #{ordernumber,jdbcType=VARCHAR},
+      PAYTIME = #{paytime,jdbcType=DATE},
+      TRANSACTIONID = #{transactionid,jdbcType=VARCHAR},
+      CHECKTIME = #{checktime,jdbcType=DATE}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAYINFO
+  </select>
+  
+  
+  
+  
+  <select id="selectIsMember" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select mbi_memberbaseinfoid from memberbaseinfo 
+  	where mbi_mobile = #{mobile,jdbcType=CHAR} 
+  		and mbi_deleted=0
+  </select>
+  
+  
+  <select id="selectIsCollect" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select t.collectid from APPLY_ACTIVITY_COLLECT t 
+  	where t.memberid = #{memberid} 
+  </select>
+  
+  <select id="selectIsPay" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select count(*) from PayInfo
+  	where memberID = #{memberid} 
+  </select>
+  
+  
+  
+  
+</mapper>

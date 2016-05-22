@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>支付页面</title>
+<link rel="stylesheet" href="jSelect/jSelect.css" type="text/css">
+<link rel="stylesheet" href="payment.css" type="text/css">
+<script src="jquery-1.8.3.js"></script>
+<script src="layer/layer.js"></script>
+<script src="payment.js"></script>
+<script src="jSelect/jquery.sinosoft.select.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="title">欢迎使用万客会支付平台，须根据您的报名预定人数进行付费，付费过程如遇到任何问题请在上海万科万科会公众服务号内容。</div>
+		<form>
+			<div class="line">
+				<div class="ui-title">活动名称</div>
+				<div class="ui-input fir">
+					<select id="activityList" class="jselect">
+						<!-- <option value="0">测试1</option>
+						<option value="1">测试2</option>
+						<option value="2">测试3</option>
+						<option value="2">测试4</option> -->
+					</select>
+				</div>
+			</div>
+			<div class="line">
+				<div class="ui-title">联系手机</div>
+				<input class="ui-input" type="text" id="" name="" placeholder="请填写报名时预留的电话" maxlength="11" />
+			</div>
+			<div class="line">
+				<div class="ui-title">报名人数</div>
+				<div class="ui-input fir">
+					<select class="jselect">
+						<option value="0">10</option>
+						<option value="1">20</option>
+						<option value="2">30</option>
+					</select>
+				</div>
+			</div>
+			<div class="line">
+				<div class="ui-title">支付金额</div>
+				<input class="ui-input money" type="text" id="" name="" placeholder="" maxlength="11" />
+			</div>
+			<div class="btn-panel">
+				<span class="btn">确认无误付款</span>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
