@@ -1,10 +1,29 @@
 $(document).ready(function(){
+	var initActivityId ="";
+	// 每人支付的金额
+	var activityMoney ="";
+	// 支付总额
+	var totalAmount ="";
+	var activityArray =new Array();
 	var pathName=window.document.location.pathname;
 	var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
 	$.baseUrl = projectName;//初始化项目根路径
 	//初始化万科活动列表
 	initWankeActivity();
 	
+	$("#activityList").change(function(){
+		var activityId = $(this).attr("value");
+		applyCountByActivity(activityId);
+		getFeeByActivityId(activityId);
+	});
+	
+	$("#applyAcount").change(function(){
+		var applyCount = $(this).attr("value");
+		totalAmount = parseInt(applyCount)*parseInt(activityMoney);
+		$("#payAmount").val(totalAmount);
+	});
+	
+	// 初始化方法
 	function initWankeActivity(){
 		$.ajax({
 			type : "post",
@@ -12,17 +31,22 @@ $(document).ready(function(){
 			dataType : "json",
 			success : function(result) {
 				if(result.code == 200){
-					// sdsd
 					list =result.list;
-					/*var appendHtml ="";*/
+					activityArray =list;
 					var appendOptions ="";
+					var applyOptions ="";
+					initActivityId =list[0].activityid;// 初始化活动id
+					activityMoney = list[0].activitymoney;// 活动支付金额
 					for(var i=0;i<list.length;i++){
 						var activityId =list[i].activityid;
 						var activityName =list[i].activityname;
 						appendOptions +="<option value="+activityId+">"+activityName+"</option>";
-						/*appendHtml.append(appendOptions);*/
 					}
-					$(".jselect").append(appendOptions);
+					$("#activityList").append(appendOptions);
+					$("#activityList").jSelect();
+					
+					// 初始化报名人数
+					applyCountByActivity(initActivityId);
 				}
 			},
 			error : function() {
@@ -31,9 +55,37 @@ $(document).ready(function(){
 		});
 	}
 	
-	$("#activityList").change(function(){
-		
-	});
+	// 根据活动id查询活动费用
+	function getFeeByActivityId(activityId){
+		for(var i=0;i<activityArray.length;i++){
+			var id = activityArray[i].activityid; 
+			if(activityId==id){
+				activityMoney =activityArray[i].activitymoney;
+				break;
+			}
+		}
+		return activityMoney;
+	}
+	
+	// 根据活动id查询报名人数
+	function applyCountByActivity(activityId){
+		var initApplyCount ="";
+		var applyOptions ="";
+		for(var i=0;i<activityArray.length;i++){
+			var id = activityArray[i].activityid; 
+			if(activityId==id){
+				initApplyCount =activityArray[i].personlimit;
+				break;
+			}
+		}
+		for(var j=0;j<initApplyCount;j++){
+			var applyId =j+1;
+			var applyName =j+1;
+			applyOptions +="<option value="+applyId+">"+applyName+"</option>";
+		}
+		$("#applyAcount").append(applyOptions);
+		$("#applyAcount").jSelect();
+	};
 	
 	if(typeof WeixinJSBridge == "undefined"){
 		  if( document.addEventListener ){
@@ -74,9 +126,9 @@ $(document).ready(function(){
 	    );
 	}
 	
-	$(".jselect").jSelect();
 	$(".btn").click(function(){
-		layer.open({
+		// 调微支付接口
+		/*layer.open({
 			  content: '测试回调'
 			  ,btn: ['确认', '取消']
 			  ,yes: function(index, layero){
@@ -87,6 +139,6 @@ $(document).ready(function(){
 			  },cancel: function(){ 
 			   
 			  }
-		 });
+		 });*/
 	});
 });
